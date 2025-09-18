@@ -1,7 +1,14 @@
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell} from "@heroui/react";
+import {
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+  Skeleton,
+} from "@heroui/react";
 
-
-const TableSkeletons = ({ count = 5 }) => {
+const TableSkeletons = ({ count = 4 }) => {
   return (
     <div className="mt-5 box-border w-full space-y-3">
       {Array.from({ length: count }).map((_, idx) => (
@@ -10,8 +17,8 @@ const TableSkeletons = ({ count = 5 }) => {
         </Skeleton>
       ))}
     </div>
-  )
-}
+  );
+};
 
 export default function App() {
   return (
@@ -21,27 +28,14 @@ export default function App() {
         <TableColumn>ROLE</TableColumn>
         <TableColumn>STATUS</TableColumn>
       </TableHeader>
-      <TableBody>
-        <TableRow key="1">
-          <TableCell>Tony Reichert</TableCell>
-          <TableCell>CEO</TableCell>
-          <TableCell>Active</TableCell>
-        </TableRow>
-        <TableRow key="2">
-          <TableCell>Zoey Lang</TableCell>
-          <TableCell>Technical Lead</TableCell>
-          <TableCell>Paused</TableCell>
-        </TableRow>
-        <TableRow key="3">
-          <TableCell>Jane Fisher</TableCell>
-          <TableCell>Senior Developer</TableCell>
-          <TableCell>Active</TableCell>
-        </TableRow>
-        <TableRow key="4">
-          <TableCell>William Howard</TableCell>
-          <TableCell>Community Manager</TableCell>
-          <TableCell>Vacation</TableCell>
-        </TableRow>
+      <TableBody items={[]} isLoading loadingContent={<TableSkeletons />}>
+        {(item, index) => (
+          <TableRow key={index}>
+            <TableCell>Tony Reichert1</TableCell>
+            <TableCell>CEO</TableCell>
+            <TableCell>Active</TableCell>
+          </TableRow>
+        )}
       </TableBody>
     </Table>
   );
