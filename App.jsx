@@ -8,7 +8,7 @@ import {
   Skeleton,
 } from "@heroui/react";
 
-const TableSkeletons = ({ count = 4 }) => {
+const TableSkeletons = ({ count = 10 }) => {
   return (
     <div className="mt-5 box-border w-full space-y-3">
       {Array.from({ length: count }).map((_, idx) => (
